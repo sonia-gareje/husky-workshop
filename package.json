@@ -6,7 +6,8 @@
     "build": "echo Building... && exit 1",
     "lint": "eslint .",
     "test": "node tests/sum.test.js",
-    "postinstall": "husky"
+    "postinstall": "husky",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "eslint": "9.39.1",
