@@ -1,0 +1,16 @@
+{
+  "name": "husky-workshop",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node src/index.js",
+    "build": "echo Building... && exit 1",
+    "lint": "eslint .",
+    "test": "node tests/sum.test.js",
+    "postinstall": "husky"
+  },
+  "devDependencies": {
+    "eslint": "9.39.1",
+    "husky": "9.1.7"
+  },
+  "type": "module"
+}

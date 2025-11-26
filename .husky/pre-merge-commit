@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Checking for secrets..."
+grep -R "SECRET_KEY" src && (echo "Secrets detected!" && exit 1)

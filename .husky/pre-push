@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🏗️ Trying to build before push..."
+npm run build || (echo "❌ Build failed! Push blocked!" && exit 1)
