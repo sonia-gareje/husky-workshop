@@ -25,7 +25,8 @@ export default [
     files: ["**/*.js"],
     languageOptions: {
       globals: {
-        console: "readonly" 
+        console: "readonly" ,
+        process: "readonly"
       }
     },
     rules: {
