@@ -1,5 +1,18 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
 
-echo "🐶 Husky says: Checking lint..."
-npm run lint || exit 1
+echo "[🐺 Husky]: Checking lint..."
+
+# Stage 1–4: ESLint
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "[🐺 Husky]: 🚨 Oops! Lint failed!"
+  exit 1
+fi
+
+# Check for secrets in code
+if grep -R "SECRET_KEY\|PASSWORD\|TOKEN" .; then
+  echo "[🐺 Husky]: 🚨 Found a secret in your code! Never commit secrets!"
+  exit 1
+fi
+
+echo "[🐺 Husky]: All checks passed! Ready to commit"
