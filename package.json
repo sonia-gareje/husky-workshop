@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "test": "node tests/sum.test.js",
     "postinstall": "husky",
-    "prepare": "husky install"
+    "pre-push": "node scripts/pre-push.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",

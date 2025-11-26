@@ -5,7 +5,7 @@ echo "[🐺 Husky][⏳ pre-commit]: Checking lint..."
 # eslint
 npm run lint
 if [ $? -ne 0 ]; then
-  echo "[🐺 Husky][🚨 pre-commit]: Oops! Lint failed!"
+  echo "[🐺 Husky][❌ pre-commit]: Oops! Lint failed!"
 fi
 
 # Check for secrets in code
@@ -16,7 +16,7 @@ for file in $STAGED_FILES; do
   MATCHES=$(grep -En "(SECRET_KEY|PASSWORD|TOKEN|AWS_TOKEN)\s*=\s*['\"]" "$file" || true)
 
   if [ -n "$MATCHES" ] || [ -n "$MATCHES_STRINGS" ]; then
-    echo "[🐺 Husky][🚨 pre-commit]: Found secret(s) in $file!"
+    echo "[🐺 Husky][❌ pre-commit]: Found secret(s) in $file!"
     [ -n "$MATCHES" ] && echo "$MATCHES"
     [ -n "$MATCHES_STRINGS" ] && echo "$MATCHES_STRINGS"
     SECRETS_FOUND=1
@@ -24,7 +24,7 @@ for file in $STAGED_FILES; do
 done
 
 if [ $SECRETS_FOUND -eq 1 ]; then
-  echo "[🐺 Husky][🚨 pre-commit]: Commit blocked! Fix secrets before committing!"
+  echo "[🐺 Husky][❌ pre-commit]: Commit blocked! Fix secrets before committing!"
   exit 1
 fi
 
