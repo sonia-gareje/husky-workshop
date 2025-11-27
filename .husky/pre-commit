@@ -11,6 +11,26 @@ if [ $LINT_STATUS -ne 0 ]; then
   exit $LINT_STATUS
 fi
 
+# Check for secrets in code
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$' || true)
+SECRETS_FOUND=0
+
+for file in $STAGED_FILES; do
+  MATCHES=$(grep -En "(SECRET_KEY|PASSWORD|TOKEN|AWS_TOKEN)\s*=\s*['\"]" "$file" || true)
+
+  if [ -n "$MATCHES" ] || [ -n "$MATCHES_STRINGS" ]; then
+    echo "[🐺 Husky][❌ pre-commit]: Found secret(s) in $file!"
+    [ -n "$MATCHES" ] && echo "$MATCHES"
+    [ -n "$MATCHES_STRINGS" ] && echo "$MATCHES_STRINGS"
+    SECRETS_FOUND=1
+  fi
+done
+
+if [ $SECRETS_FOUND -eq 1 ]; then
+  echo "[🐺 Husky][❌ pre-commit]: Commit blocked! Fix secrets before committing!"
+  exit 1
+fi
+
 echo "[🐺 Husky][✅ pre-commit]: All checks passed! Ready to commit"
 exit 0
 
@@ -23,31 +43,3 @@ exit 0
 
 
 
-
-
-
-
-
-
-
-
-
-# Check for secrets in code
-# STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$' || true)
-# SECRETS_FOUND=0
-
-# for file in $STAGED_FILES; do
-#   MATCHES=$(grep -En "(SECRET_KEY|PASSWORD|TOKEN|AWS_TOKEN)\s*=\s*['\"]" "$file" || true)
-
-#   if [ -n "$MATCHES" ] || [ -n "$MATCHES_STRINGS" ]; then
-#     echo "[🐺 Husky][❌ pre-commit]: Found secret(s) in $file!"
-#     [ -n "$MATCHES" ] && echo "$MATCHES"
-#     [ -n "$MATCHES_STRINGS" ] && echo "$MATCHES_STRINGS"
-#     SECRETS_FOUND=1
-#   fi
-# done
-
-# if [ $SECRETS_FOUND -eq 1 ]; then
-#   echo "[🐺 Husky][❌ pre-commit]: Commit blocked! Fix secrets before committing!"
-#   exit 1
-# fi
