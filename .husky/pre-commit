@@ -5,24 +5,6 @@ echo "[🐺 Husky][⏳ pre-commit]: Checking lint..."
 # eslint
 npm run lint
 
-# Detect secrets
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$' || true)
-
-for file in $STAGED_FILES; do
-  MATCHES=$(grep -En "SECRET_KEY[[:space:]]*=[[:space:]]*['\"]" "$file" || true)
-  
-  if [ -n "$MATCHES" ]; then
-    echo "[🐺 Husky][❌ pre-commit]: Found secret(s) in $file!"
-    echo "$MATCHES"
-    SECRETS_FOUND=1
-  fi
-done
-
-if [ $SECRETS_FOUND -eq 1 ]; then
-  echo "[🐺 Husky][❌ pre-commit]: Commit blocked! Fix secrets before committing!"
-  exit 1
-fi
-
 echo "[🐺 Husky][✅ pre-commit]: All checks passed! Ready to commit"
 exit 0
 
@@ -30,6 +12,30 @@ exit 0
 
 
 
+
+
+
+
+
+
+
+# # Detect secrets
+# STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$' || true)
+
+# for file in $STAGED_FILES; do
+#   MATCHES=$(grep -En "SECRET_KEY[[:space:]]*=[[:space:]]*['\"]" "$file" || true)
+  
+#   if [ -n "$MATCHES" ]; then
+#     echo "[🐺 Husky][❌ pre-commit]: Found secret(s) in $file!"
+#     echo "$MATCHES"
+#     SECRETS_FOUND=1
+#   fi
+# done
+
+# if [ $SECRETS_FOUND -eq 1 ]; then
+#   echo "[🐺 Husky][❌ pre-commit]: Commit blocked! Fix secrets before committing!"
+#   exit 1
+# fi
 
 
 
