@@ -16,7 +16,7 @@ STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$' ||
 SECRETS_FOUND=0
 
 for file in $STAGED_FILES; do
-  MATCHES=$(grep -En "(SECRET_KEY|PASSWORD|TOKEN|AWS_TOKEN)[[:space:]]*=[[:space:]]*['\"]" "$file" || true)
+  MATCHES=$(grep -En "\(SECRET_KEY\|PASSWORD\|TOKEN\|AWS_TOKEN\)[[:space:]]*=[[:space:]]*['\"]" "$file" || true)
 
   if [ -n "$MATCHES" ] || [ -n "$MATCHES_STRINGS" ]; then
     echo "[🐺 Husky][❌ pre-commit]: Found secret(s) in $file!"
