@@ -49,7 +49,7 @@
 // ======================================================
 
 // const SECRET_KEY = process.env.SECRET_KEY;
-const AWS_TOKEN = process.env.AWS_TOKEN;
+// const AWS_TOKEN = process.env.AWS_TOKEN;
 // eslint-disable-next-line no-console
 // console.log(SECRET_KEY)
 // eslint-disable-next-line no-console
