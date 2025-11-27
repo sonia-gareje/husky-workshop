@@ -6,8 +6,7 @@
     "build": "echo Building... && exit 1",
     "lint": "eslint .",
     "test": "node tests/sum.test.js",
-    "postinstall": "husky",
-    "pre-push": "node scripts/pre-push.js"
+    "postinstall": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "20.1.0",

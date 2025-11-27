@@ -2,7 +2,7 @@
 
 echo "[🐺 Husky][⏳ pre-push] Running safety checks before pushing..."
 
-if ! npm run pre-push; then
+if ! node scripts/pre-push.js; then
   echo ""
   echo "[🐺 Husky][❌ pre-push] Push rejected!"
   echo "Fix the issues and try again."

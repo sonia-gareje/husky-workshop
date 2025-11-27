@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * pre-push.js
  *
@@ -41,19 +42,13 @@ function fetchJoke() {
   return json.joke;
 }
 
+let user = execSync('git config user.name').toString().trim();
+const name = user.split('-')[0];
+
 try {
   run('npm test');
-  run('npm run build');
-
-  // eslint-disable-next-line no-console
-  console.log(
-    chalk.green(
-      figlet.textSync('Ya era hora!!!', { font: 'Standard' })
-    )
-  );
 
 } catch {
-  let user = execSync('git config user.name').toString().trim();
 
   const husky =
 `   /^-----^\\
@@ -66,28 +61,39 @@ try {
    \\_oo__oo_/###o
 `;
 
-  // eslint-disable-next-line no-console
   console.log(chalk.red(husky)); 
-
-  const name = user.split('-')[0];
-  // eslint-disable-next-line no-console
   console.log(
     chalk.red(
-      figlet.textSync(`${name} lo has roto todo!!!`, { font: 'Standard' })
+      figlet.textSync(`${name} lo has roto todo!!! Revisa los tests`, { font: 'Standard' })
+    )
+  );
+  
+  process.exit(1);
+}
+
+try {
+  run('npm run build');
+
+  console.log(
+    chalk.green(
+      figlet.textSync('Ya era hora!!!', { font: 'Standard' })
     )
   );
 
-  // eslint-disable-next-line no-console
+} catch {  
+  console.log(
+    chalk.red(
+      figlet.textSync(`${name} esto no buildea!!!`, { font: 'Standard' })
+    )
+  );
+
   console.log('Te dejo un chiste para que te repongas del disgusto...')
 
   const joke = fetchJoke();
   const line = '─'.repeat(joke.length + 2)
 
-  // eslint-disable-next-line no-console
   console.log(chalk.yellow(`┌${line}┐`));
-  // eslint-disable-next-line no-console
   console.log(chalk.yellow(`│ ${joke} │`));
-  // eslint-disable-next-line no-console
   console.log(chalk.yellow(`└${line}┘`));
 
   process.exit(1);
