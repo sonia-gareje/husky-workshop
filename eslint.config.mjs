@@ -28,7 +28,7 @@ export default [
 
 
 
-import { ESLintUtils } from "@typescript-eslint/utils";
+// import { ESLintUtils } from "@typescript-eslint/utils";
 
 // const noSecretsRule = ESLintUtils.RuleCreator(() => "")({
 //   name: "no-secrets",
