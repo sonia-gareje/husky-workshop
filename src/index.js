@@ -48,7 +48,7 @@
 // STAGE 5: "Secret" committed to repo
 // ======================================================
 
-const SECRET_KEY = "123123";
+const SECRET_KEY = "12312asdasd3";
 const AWS_TOKEN = process.env.AWS_TOKEN;
 // eslint-disable-next-line no-console
 console.log(SECRET_KEY, AWS_TOKEN)
