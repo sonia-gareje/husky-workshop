@@ -61,12 +61,15 @@ try {
    \\_oo__oo_/###o
 `;
 
-  console.log(chalk.red(husky)); 
+  console.log("");
+  console.log(chalk.white(husky)); 
   console.log(
-    chalk.red(
-      figlet.textSync(`${name} lo has roto todo!!! Revisa los tests`, { font: 'Standard' })
+    chalk.white(
+      figlet.textSync(`${name}, lo has roto todo!!!`, { font: 'Standard' })
     )
   );
+
+  console.log("[🐺 Husky][❌ pre-push]: revisa los tests anda...")
   
   process.exit(1);
 }
@@ -82,7 +85,7 @@ try {
 
 } catch {  
   console.log(
-    chalk.red(
+    chalk.white(
       figlet.textSync(`${name} esto no buildea!!!`, { font: 'Standard' })
     )
   );
