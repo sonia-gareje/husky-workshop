@@ -44,40 +44,11 @@
 
 
 
-// ======================================================
-// STAGE 5: "Secret" committed to repo
-// ======================================================
+// // ======================================================
+// // STAGE 5: "Secret" committed to repo
+// // ======================================================
 
-// const SECRET_KEY = process.env.AWS_TOKEN;
-// const AWS_TOKEN = process.env.AWS_TOKEN;
-
-
-// ======================================================
-// STAGE 6: Fake “build” failure and unused values ⚙️
-// The build script is intentionally failing
-// ======================================================
-
-/*
-let arr = [1, 2, 3];
-arr.map(n => n * n); // not using the result on purpose
-*/
-
-
-// ======================================================
-// STAGE 7: Bad test in tests/sum.test.js 🧪
-// ======================================================
-//
-// In tests/sum.test.js:
-//   assert.equal(sum(2,2), 5);
-//
-
-
-// ======================================================
-// STAGE 8: Example of good code 😇
-// Show this last, when everything passes
-// ======================================================
-
-/*
-const greet = (name) => `Hello ${name}!`;
-console.log(greet("dev team"));
-*/
+// // const SECRET_KEY = "123123";
+// // const AWS_TOKEN = process.env.AWS_TOKEN;
+// // // eslint-disable-next-line no-console
+// // console.log(SECRET_KEY, AWS_TOKEN)

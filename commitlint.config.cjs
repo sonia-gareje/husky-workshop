@@ -13,14 +13,13 @@ module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     /**
-     * Allow unlimited line length in the body of the commit message.
-     * Format: [level, applicable, value]
-     */
-    'body-max-line-length': [2, 'always', Infinity],
-
-    /**
      * Set the maximum header length to 200 characters.
      */
     'header-max-length': [2, 'always', 200],
+    /**
+     * Allow unlimited line length in the body of the commit message.
+     * Format: [level, applicable, value]
+     */
+    'body-max-line-length': [2, 'always', Infinity],    
   },
 };

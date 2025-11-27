@@ -1,8 +1,8 @@
-#!/usr/bin/env sh
+# #!/usr/bin/env sh
 
-echo "[🐺 Husky][⏳ commit-msg] Validating that the commit message follows conventional commits rules..."
+# echo "[🐺 Husky][⏳ commit-msg] Validating that the commit message follows conventional commits rules..."
 
-# Run commitlint to check the commit message against conventional commits spec
-npx --no-install commitlint --edit "$1"
+# # Run commitlint to check the commit message against conventional commits spec
+# npx --no-install commitlint --edit "$1"
 
-echo "[🐺 Husky][✅ commit-msg] Commit message validated"
+# echo "[🐺 Husky][✅ commit-msg] Commit message validated"

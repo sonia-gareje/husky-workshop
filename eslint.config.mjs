@@ -1,3 +1,33 @@
+export default [
+  {
+    files: ["**/*.js"],
+    languageOptions: {
+      globals: {
+        console: "readonly" ,
+        process: "readonly"
+      }
+    },
+    rules: {
+      "no-console": "error", // console.log
+      "no-constant-condition": "warn", // dead code
+      "no-undef": "error", // undeclared variables
+      "no-unused-vars": ["warn", { "vars": "all" }], // unused vars
+      "no-empty": ["error", { "allowEmptyCatch": false }],
+    }
+  }
+];
+
+
+
+
+
+
+
+
+
+
+
+
 import { ESLintUtils } from "@typescript-eslint/utils";
 
 // const noSecretsRule = ESLintUtils.RuleCreator(() => "")({
@@ -19,23 +49,3 @@ import { ESLintUtils } from "@typescript-eslint/utils";
 //     };
 //   }
 // });
-
-export default [
-  {
-    files: ["**/*.js"],
-    languageOptions: {
-      globals: {
-        console: "readonly" ,
-        process: "readonly"
-      }
-    },
-    rules: {
-      "no-console": "error", // console.log
-      "no-constant-condition": "warn", // dead code
-      "no-undef": "error", // undeclared variables
-      "no-unused-vars": ["warn", { "vars": "all" }], // unused vars
-      "no-empty": ["error", { "allowEmptyCatch": false }],
-      // "no-secrets": ["error", noSecretsRule]
-    }
-  }
-];
