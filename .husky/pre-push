@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
 
-echo "🏗️ Trying to build before push..."
-npm run build || (echo "❌ Build failed! Push blocked!" && exit 1)
+echo "[🐺 Husky][⏳ pre-push] Running safety checks before pushing..."
+
+if ! node scripts/pre-push.js; then
+  exit 1
+fi
+
+echo "[🐺 Husky][✅ pre-push] All checks passed. Proceeding..."
+
